@@ -13,7 +13,7 @@ namespace HolidayManager.Repository
         private readonly ApplicationDbContext _db;
         public LeaveHistoryRepository(ApplicationDbContext db)
         {
-            db = _db;
+            db=_db;
         }
         public bool Create(LeaveHistory entity)
         {
@@ -31,6 +31,11 @@ namespace HolidayManager.Repository
         }
 
         public LeaveHistory FindById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsExits(string id)
         {
             throw new NotImplementedException();
         }

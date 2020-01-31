@@ -17,5 +17,6 @@ namespace HolidayManager.Data
         public DbSet<LeaveHistory> LeaveHistories { get; set; }
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<LeaveAllocation> leaveAllocations { get; set; }
+        public DbSet<HolidayManager.Models.DetailsLeaveTypeVM> DetailsLeaveTypeVM { get; set; }
     }
 }

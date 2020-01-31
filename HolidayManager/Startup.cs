@@ -47,14 +47,20 @@ namespace HolidayManager
             services.AddScoped<ILeaveHistory, LeaveHistoryRepository>();
             services.AddAutoMapper(typeof(Maps));
 
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IHostingEnvironment env,
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -71,8 +77,8 @@ namespace HolidayManager
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            SeedData.Seed(userManager,roleManager);
             app.UseAuthentication();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

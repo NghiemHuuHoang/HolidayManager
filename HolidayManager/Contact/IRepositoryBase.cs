@@ -9,6 +9,7 @@ namespace HolidayManager.Contact
     {
         ICollection<T> FindAll();
         T FindById(string id);
+        bool IsExits(string id);
         bool Create(T entity);
         bool Update(T entity);
         bool Delete(T entity);

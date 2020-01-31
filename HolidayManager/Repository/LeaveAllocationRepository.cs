@@ -13,7 +13,7 @@ namespace HolidayManager.Repository
         private readonly ApplicationDbContext _db;
         public LeaveAllocationRepository(ApplicationDbContext db)
         {
-            db = _db;
+            db=_db;
         }
         public bool Create(LeaveAllocation entity)
         {
@@ -31,6 +31,11 @@ namespace HolidayManager.Repository
         }
 
         public LeaveAllocation FindById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsExits(string id)
         {
             throw new NotImplementedException();
         }
